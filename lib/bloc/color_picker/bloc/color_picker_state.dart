@@ -5,7 +5,7 @@ abstract class ColorPickerState {}
 
 class ColorPickerInitial extends ColorPickerState {}
 
-class ColorPickerWaitting extends ColorPickerState {}
+class ColorPickerWaiting extends ColorPickerState {}
 
 class ColorPickerGameOver extends ColorPickerState {
   final bool isNewHighScore;

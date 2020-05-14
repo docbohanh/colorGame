@@ -32,8 +32,8 @@ dependencies:
   flutter_bloc: ^4.0.0
   provider: any
   shared_preferences: ^0.5.7
-  firebase_admob: ^0.9.3+2
-  firebase_core: ^0.4.4+3
+#  firebase_admob: ^0.9.3+2
+#  firebase_core: ^0.4.4+3
   random_color: ^1.0.5
 
 dev_dependencies:

@@ -6,7 +6,7 @@ import 'package:colorgame/utils/utils.dart';
 import 'package:colorgame/view/game_screen/color_picker.dart';
 import 'package:colorgame/widget/neu_button.dart';
 import 'package:colorgame/widget/neu_slider.dart';
-import 'package:firebase_admob/firebase_admob.dart';
+//import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,25 +20,26 @@ class _NormalModeState extends State<NormalMode>
     with SingleTickerProviderStateMixin {
   ColorPickerBloc _colorPickerBloc;
   HighScoreBloc _highScoreBloc;
+  // ignore: close_sinks
   LanguageBloc _languageBloc;
   int level = 1;
   int adLevel = 0;
   int second = 4;
-  int millisecond = 500;
+  int millisecond = 100;
   double height;
   double width;
   bool isInit = false;
   AnimationController _animationController;
-  RewardedVideoAd _rewardedVideoAd = RewardedVideoAd.instance;
+//  RewardedVideoAd _rewardedVideoAd = RewardedVideoAd.instance;
   bool _hasConnect = false;
   int _videoAds = 0;
 
-  InterstitialAd createInterstitialAd() {
-    return InterstitialAd(
-        adUnitId: Admob.middleID,
-        targetingInfo: Admob.targetingInfo,
-        listener: (MobileAdEvent event) {});
-  }
+//  InterstitialAd createInterstitialAd() {
+//    return InterstitialAd(
+//        adUnitId: Admob.middleID,
+//        targetingInfo: Admob.targetingInfo,
+//        listener: (MobileAdEvent event) {});
+//  }
 
   secondToWait(bool run) {
     if (isInit) {
@@ -90,9 +91,9 @@ class _NormalModeState extends State<NormalMode>
               try {
                 final result = await InternetAddress.lookup('google.com');
                 if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-                  createInterstitialAd()
-                    ..load()
-                    ..show();
+//                  createInterstitialAd()
+//                    ..load()
+//                    ..show();
                 }
               } on SocketException catch (_) {}
               Navigator.pop(context);
@@ -121,21 +122,21 @@ class _NormalModeState extends State<NormalMode>
 
       setState(() {});
     });
-    if (!kIsWeb) {
-      FirebaseAdMob.instance.initialize(appId: Admob.appID);
-      _rewardedVideoAd.listener =
-          (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
-        if (event == RewardedVideoAdEvent.rewarded) {
-          _colorPickerBloc.add(ContinueEvent());
-          setState(() => _videoAds++);
-        }
-        if (event == RewardedVideoAdEvent.loaded) {
-          _rewardedVideoAd.show();
-        }
-        if (event == RewardedVideoAdEvent.failedToLoad) {}
-      };
-      _hasConnectSet();
-    }
+//    if (!kIsWeb) {
+//      FirebaseAdMob.instance.initialize(appId: Admob.appID);
+//      _rewardedVideoAd.listener =
+//          (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
+//        if (event == RewardedVideoAdEvent.rewarded) {
+//          _colorPickerBloc.add(ContinueEvent());
+//          setState(() => _videoAds++);
+//        }
+//        if (event == RewardedVideoAdEvent.loaded) {
+//          _rewardedVideoAd.show();
+//        }
+//        if (event == RewardedVideoAdEvent.failedToLoad) {}
+//      };
+//      _hasConnectSet();
+//    }
   }
 
   _hasConnectSet() async {
@@ -209,9 +210,9 @@ class _NormalModeState extends State<NormalMode>
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        createInterstitialAd()
-          ..load()
-          ..show();
+//        createInterstitialAd()
+//          ..load()
+//          ..show();
       }
     } on SocketException catch (_) {}
     return true;
@@ -307,9 +308,9 @@ class _NormalModeState extends State<NormalMode>
                                         'google.com');
                                     if (result.isNotEmpty &&
                                         result[0].rawAddress.isNotEmpty) {
-                                      createInterstitialAd()
-                                        ..load()
-                                        ..show();
+//                                      createInterstitialAd()
+//                                        ..load()
+//                                        ..show();
                                     }
                                   } on SocketException catch (_) {}
                                 }
@@ -318,7 +319,7 @@ class _NormalModeState extends State<NormalMode>
                               print(second + millisecond / 1000);
                             },
                             builder: (BuildContext context, state) {
-                              if (state is ColorPickerWaitting ||
+                              if (state is ColorPickerWaiting ||
                                   state is ColorPickerInitial ||
                                   state is ColorPickerDone ||
                                   state is ColorPickerContinue) {
@@ -435,12 +436,12 @@ class _NormalModeState extends State<NormalMode>
                                                   fontWeight: FontWeight.bold)))
                                     ])),
                                     onTap: () async {
-                                      try {
-                                        await _rewardedVideoAd.load(
-                                          adUnitId: Admob.continuationID,
-                                          targetingInfo: Admob.targetingInfo,
-                                        );
-                                      } catch (PlatformException) {}
+//                                      try {
+//                                        await _rewardedVideoAd.load(
+//                                          adUnitId: Admob.continuationID,
+//                                          targetingInfo: Admob.targetingInfo,
+//                                        );
+//                                      } catch (PlatformException) {}
                                     });
                               List<Widget> _button = gameOverButton();
                               return _button[index];

@@ -5,7 +5,7 @@ import 'package:colorgame/utils/utils.dart';
 import 'package:colorgame/view/game_screen/color_picker.dart';
 import 'package:colorgame/widget/neu_button.dart';
 import 'package:colorgame/widget/neu_slider.dart';
-import 'package:firebase_admob/firebase_admob.dart';
+//import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +18,7 @@ class SpeedMode extends StatefulWidget {
 class _SpeedModeState extends State<SpeedMode>
     with SingleTickerProviderStateMixin {
   ColorPickerBloc _colorPickerBloc;
+  // ignore: close_sinks
   LanguageBloc _languageBloc;
   HighScoreBloc _highScoreBloc;
 
@@ -29,12 +30,12 @@ class _SpeedModeState extends State<SpeedMode>
   bool isInit = false;
   AnimationController _animationController;
 
-  InterstitialAd createInterstitialAd() {
-    return InterstitialAd(
-        adUnitId: Admob.middleID,
-        targetingInfo: Admob.targetingInfo,
-        listener: (MobileAdEvent event) {});
-  }
+//  InterstitialAd createInterstitialAd() {
+//    return InterstitialAd(
+//        adUnitId: Admob.middleID,
+//        targetingInfo: Admob.targetingInfo,
+//        listener: (MobileAdEvent event) {});
+//  }
 
   List<Widget> gameOverButton() {
     return [
@@ -73,9 +74,9 @@ class _SpeedModeState extends State<SpeedMode>
           try {
             final result = await InternetAddress.lookup('google.com');
             if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-              createInterstitialAd()
-                ..load()
-                ..show();
+//              createInterstitialAd()
+//                ..load()
+//                ..show();
             }
           } on SocketException catch (_) {}
           Navigator.pop(context);
@@ -132,9 +133,9 @@ class _SpeedModeState extends State<SpeedMode>
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        createInterstitialAd()
-          ..load()
-          ..show();
+//        createInterstitialAd()
+//          ..load()
+//          ..show();
       }
     } on SocketException catch (_) {}
     return true;
@@ -248,9 +249,9 @@ class _SpeedModeState extends State<SpeedMode>
                               await InternetAddress.lookup('google.com');
                           if (result.isNotEmpty &&
                               result[0].rawAddress.isNotEmpty) {
-                            createInterstitialAd()
-                              ..load()
-                              ..show();
+//                            createInterstitialAd()
+//                              ..load()
+//                              ..show();
                           }
                         } on SocketException catch (_) {}
                       }
@@ -258,7 +259,7 @@ class _SpeedModeState extends State<SpeedMode>
                     }
                   },
                   builder: (BuildContext context, state) {
-                    if (state is ColorPickerWaitting ||
+                    if (state is ColorPickerWaiting ||
                         state is ColorPickerInitial ||
                         state is ColorPickerDone ||
                         state is ColorPickerContinue) {

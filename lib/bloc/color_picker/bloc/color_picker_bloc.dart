@@ -23,6 +23,6 @@ class ColorPickerBloc extends Bloc<ColorPickerEvent, ColorPickerState> {
     } else if (event is ContinueEvent) {
       yield ColorPickerContinue();
     } else
-      yield ColorPickerWaitting();
+      yield ColorPickerWaiting();
   }
 }
